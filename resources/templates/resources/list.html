@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestión de Recursos</title>
+</head>
+<body>
+    <h1>Lista de Recursos</h1>
+    {% for resource in resources %}
+    <li>{{ resource.name }} - {{ resource.description }}</li>
+    {% endfor %}
+</body>
+</html>
