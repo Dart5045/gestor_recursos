@@ -25,4 +25,5 @@ urlpatterns = [
     #path('classrooms/', include('classrooms.urls')),
     #path('students/', include('students.urls')),
     #path('api/', include('api.urls')),
+    path('dashboard/', include('dashboard.urls')),
 ]
