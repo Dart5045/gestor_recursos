@@ -1,0 +1,11 @@
+<h1>Classrooms</h1>
+<a href="{% url 'create_classroom' %}">Create New Classroom</a>
+<ul>
+    {% for classroom in classrooms %}
+        <li>
+            {{ classroom.name }} - {{ classroom.capacity }} - {{ classroom.location }}
+            <a href="{% url 'edit_classroom' classroom.id %}">Edit</a>
+            <a href="{% url 'delete_classroom' classroom.id %}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
