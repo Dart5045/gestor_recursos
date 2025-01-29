@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--o9)!jb&75**!kz33ywobkg(pz0q#y!)kisjq_9@57ua#x&f=6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True  # Esto expone información sensible en caso de errores
+
 
 ALLOWED_HOSTS = []
 
@@ -86,7 +87,7 @@ DATABASES = {
         'NAME': 'gestor_recursos',
         'USER': 'admin',
         'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
+        'HOST': 'DB',
         'PORT': '5432',
     }
 }
