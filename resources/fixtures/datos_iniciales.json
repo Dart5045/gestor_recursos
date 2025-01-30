@@ -1,0 +1,20 @@
+[
+    {
+      "model": "resources.recurso",
+      "pk": 1,
+      "fields": {
+        "nombre": "Curso",
+        "descripcion": "Descripción del recurso 1",
+        "estado": "disponible"
+      }
+    },
+    {
+      "model": "resources.recurso",
+      "pk": 2,
+      "fields": {
+        "nombre": "Recurso 2",
+        "descripcion": "Descripción del recurso 2",
+        "estado": "no_disponible"
+      }
+    }
+  ]
