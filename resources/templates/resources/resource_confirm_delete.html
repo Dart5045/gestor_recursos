@@ -1,10 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Are you sure you want to delete {{ object.name }}?</h2>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirm Delete</button>
-  </form>
-  <a href="{% url 'resources:list' %}">Cancel</a>
+<!-- Contenedor para centrar todo el contenido -->
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="text-center">
+    <div class="alert alert-warning" role="alert">
+      <h4 class="alert-heading">¿Estás seguro de que deseas eliminar "{{ object.name }}"?</h4>
+      <p>Esta acción no se puede deshacer.</p>
+      <hr>
+      
+      <!-- Formulario para confirmar eliminación -->
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+      </form>
+      
+      <!-- Botón de Cancelar -->
+      <a href="{% url 'resources:list' %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
