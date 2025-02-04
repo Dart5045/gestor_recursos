@@ -1,44 +1,56 @@
 {% extends "base.html" %}
 
-{% block title %}Inicio{% endblock %}
+{% block title %}Lista de Recursos{% endblock %}
 
 {% block content %}
 
+<!-- Contenedor para el encabezado y el botón -->
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Lista de Recursos</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-      <a href="{% url 'resources:create' %}" class="btn btn-sm btn-outline-primary">Create New Resource</a>
+  <h1 class="h2">Lista de Recursos</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <!-- Botón Crear Recurso con icono -->
+      <a href="{% url 'resources:create' %}" class="btn btn-sm btn-outline-primary">
+        <i class="fas fa-plus-circle"></i> Crear Nuevo Recurso
+      </a>
     </div>
   </div>
+</div>
 
-  <div class="table-responsive small">
-    <table class="table table-striped table-sm">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Descripción</th>
-          <th scope="col">Option</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for resource in resources %}
-        <tr>
-          <td>{{ resource.id }}</td>
-          <td>{{ resource.id }}</td>
-          <td>{{ resource.name }}</td>
-          <td>{{ resource.description }}</td>
-          <td> 
-            <a href="{% url 'resources:update' resource.pk %}">Edit</a> | 
-            <a href="{% url 'resources:delete' resource.pk %}">Delete</a>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+<!-- Tabla de Recursos -->
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for resource in resources %}
+      <tr>
+        <td>{{ resource.id }}</td>
+        <td>{{ resource.id }}</td>
+        <td>{{ resource.name }}</td>
+        <td>{{ resource.description }}</td>
+        <td>
+          <!-- Botón Editar con icono -->
+          <a href="{% url 'resources:update' resource.pk %}" class="btn btn-sm btn-outline-primary">
+            <i class="fas fa-edit"></i> Editar
+          </a>
 
+          <!-- Botón Eliminar con icono -->
+          <a href="{% url 'resources:delete' resource.pk %}" class="btn btn-sm btn-outline-danger">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}
-

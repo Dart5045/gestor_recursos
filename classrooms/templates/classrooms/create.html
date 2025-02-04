@@ -5,19 +5,25 @@
 {% block content %}
 
 <form method="post">
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Add Classroom</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-        <a href="{% url 'list_classrooms' %}" class="btn btn-sm btn-outline-primary">Cancel</a>
-        <button type="submit" class="btn btn-sm btn-outline-primary">Save</button>
+        <!-- Botón Cancelar con icono -->
+        <a href="{% url 'classrooms:list' %}" class="btn btn-sm btn-outline-secondary">
+          <i class="fas fa-times-circle"></i> Cancelar
+        </a>
+
+        <!-- Botón Guardar con icono -->
+        <button type="submit" class="btn btn-sm btn-outline-success">
+          <i class="fas fa-save"></i> Guardar
+        </button>
       </div>
-      
     </div>
   </div>
-    {% csrf_token %}
-    {{ form.as_p }}
-    
+
+  {% csrf_token %}
+  {{ form.as_p }}
 </form>
 
 {% endblock %}
