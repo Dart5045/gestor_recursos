@@ -1,27 +1,31 @@
 {% extends "base.html" %}
 
-<h1>Edit Classroom</h1>
-<a href="{% url 'list_classrooms' %}">Cancel</a>
-
-
-
-
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
 
+<h1>Edit Classroom</h1>
+
 <form method="post">
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Classrooms</h1>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Edit Classrooms</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-        <a href="{% url 'list_classrooms' %}" class="btn btn-sm btn-outline-primary">Cancel</a>
-        <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
+        <!-- Botón Cancelar con icono -->
+        <a href="{% url 'classrooms:list' %}" class="btn btn-sm btn-outline-secondary">
+          <i class="fas fa-times-circle"></i> Cancelar
+        </a>
+        
+        <!-- Botón Actualizar con icono -->
+        <button type="submit" class="btn btn-sm btn-outline-success">
+          <i class="fas fa-sync-alt"></i> Actualizar
+        </button>
       </div>
     </div>
   </div>
-    {% csrf_token %}
-    {{ form.as_p }}
+
+  {% csrf_token %}
+  {{ form.as_p }}
 </form>
 
 {% endblock %}
