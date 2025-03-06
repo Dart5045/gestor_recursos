@@ -29,6 +29,13 @@ DEBUG = True  # Esto expone información sensible en caso de errores
 ALLOWED_HOSTS = []
 
 
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'http://elasticsearch:9200'  # Usa el nombre del servicio de Docker
+    },
+}
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_elasticsearch_dsl',
     'accounts',
     'resources',
     'materials',
