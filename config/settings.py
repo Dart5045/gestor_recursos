@@ -29,7 +29,7 @@ DEBUG = True  # Esto expone información sensible en caso de errores
 ALLOWED_HOSTS = []
 
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_REDIRECT_URL = '/'
 
 ELASTICSEARCH_DSL = {
     'default': {
@@ -47,14 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_elasticsearch_dsl',
-    'accounts',
-    'resources',
-    'materials',
-    'classrooms',
-    'students',
-    'api',
-    'dashboard',
-    'login',
+    'src.accounts',
+    'src.resources',
+    'src.materials',
+    'src.classrooms',
+    'src.students',
+    'src.dashboard',
+    'src.login',
 ]
 
 MIDDLEWARE = [
