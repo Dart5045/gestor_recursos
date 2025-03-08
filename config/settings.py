@@ -28,13 +28,14 @@ DEBUG = True  # Esto expone información sensible en caso de errores
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'
 
 ELASTICSEARCH_DSL = {
     'default': {
         'hosts': 'http://elasticsearch:9200'  # Usa el nombre del servicio de Docker
     },
 }
-
 
 # Application definition
 
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'

@@ -7,47 +7,33 @@ from django.utils.timezone import now
 from .documents import UserDocument
 
 def vulnerable_login(request):
-    ip_address = request.META.get('REMOTE_ADDR')  # Obtiene la dirección IP del usuario
+    ip_address = request.META.get('REMOTE_ADDR')  
 
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
 
-        success = user is not None  # True si el login es exitoso, False si falla
+        success = user is not None  
 
         if success:
             login(request, user)
 
-        # Buscar si el usuario ya está indexado en Elasticsearch
-        try:
-            user_document = UserDocument.get(id=user.id) if success else None
-        except UserDocument.DoesNotExist:
-            user_document = None
+            # Registrar solo logins exitosos para no exponer intentos fallidos
+            user_document, created = UserDocument.get_or_create(id=user.id, defaults={
+                'username': user.username,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'email': user.email,
+            })
 
-        # Si el documento existe, actualizarlo; si no, crearlo
-        if user_document:
+            # Actualizar último login exitoso
             user_document.last_login_attempt = now()
-            user_document.login_success = success
-            user_document.ip_address = ip_address
-        else:
-            user_document = UserDocument(
-                meta={'id': user.id if success else f"failed-{username}-{now().timestamp()}"},
-                username=username,
-                first_name=user.first_name if success else '',
-                last_name=user.last_name if success else '',
-                email=user.email if success else '',
-                last_login_attempt=now(),
-                login_success=success,
-                ip_address=ip_address,
-            )
+            user_document.save()
 
-        # Guardar en Elasticsearch
-        user_document.save()
-
-        if success:
             return redirect('/dashboard/')
         else:
+            # No almacenamos intentos fallidos con detalles de usuario por privacidad
             return HttpResponse('Credenciales inválidas')
 
     return render(request, 'login/vulnerable_login.html')

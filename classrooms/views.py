@@ -13,7 +13,7 @@ def create_classroom(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Classroom created successfully.')
-            return redirect('list_classrooms')
+            return redirect('classrooms:list') 
     else:
         form = ClassroomForm()
     return render(request, 'classrooms/create.html', {'form': form})
@@ -25,7 +25,7 @@ def edit_classroom(request, id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Classroom updated successfully.')
-            return redirect('list_classrooms')
+            return redirect('classrooms:list') 
     else:
         form = ClassroomForm(instance=classroom)
     return render(request, 'classrooms/edit.html', {'form': form, 'classroom': classroom})
@@ -35,5 +35,5 @@ def delete_classroom(request, id):
     if request.method == 'POST':
         classroom.delete()
         messages.success(request, 'Classroom deleted successfully.')
-        return redirect('list_classrooms')
+        return redirect('classrooms:list') 
     return render(request, 'classrooms/delete.html', {'classroom': classroom})
