@@ -1,0 +1,6 @@
+projectKey=GestorRecursos
+serverUrl=http://localhost:9000
+serverVersion=25.3.0.104237
+dashboardUrl=http://localhost:9000/dashboard?id=GestorRecursos
+ceTaskId=72935abf-00b2-4a04-b0f0-5f111b2708f4
+ceTaskUrl=http://localhost:9000/api/ce/task?id=72935abf-00b2-4a04-b0f0-5f111b2708f4
