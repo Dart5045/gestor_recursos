@@ -146,3 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'  # Página a la que redirige después de login
 LOGOUT_REDIRECT_URL = '/login/'  # Página a la que redirige después de logout
+
+SESSION_COOKIE_HTTPONLY = True  # Hace la cookie inaccesible a JavaScript
+SESSION_COOKIE_SECURE = True    # Hace que la cookie solo se envíe por HTTPS
+SESSION_COOKIE_SAMESITE = 'Lax'  # Puede ser 'Strict', 'Lax' o 'None'
