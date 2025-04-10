@@ -26,3 +26,4 @@ docker-compose.override.yml
 
 # Secrets
 *.key
+config.env
